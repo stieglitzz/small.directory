@@ -1,85 +1,385 @@
-/* CSS files add styling rules to your content */
+/* RESET */
+*, *:after, *:before {
+  box-sizing: border-box;
+}
 
+html {
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: normal;
+  margin: 0;
+}
+
+img, iframe {
+  border: 0;
+}
+
+/* FONTS */
+@font-face {
+  font-family: 'FT88';
+  src: url('fonts/FT88-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT88 Italic';
+  src: url('fonts/FT88-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT88 Bold';
+  src: url('fonts/FT88-Bold.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT88 Serif';
+  src: url('fonts/FT88-Serif.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FT88 School';
+  src: url('fonts/FT88-School.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* root */
+:root {
+  /* FONTS */
+  --reg: "FT88";
+  --bold: "FT88 Bold";
+  --italic: "FT88 Italic";
+  --serif: "FT88 Serif";
+  --school: "FT88 School";
+  /* FONT SIZES */
+  --nav: 1.05rem;
+  --filter: 0.95rem;
+  --p: 0.9rem;
+  /* COLORS */
+  --white: white;
+  --blue-100: #e8edfc;
+  /* BUTTON COLOR */
+  --blue-200: #6888e9;
+  /* UNUSED */
+  --blue-300: #456de4;
+  /* UNUSED */
+  --blue-400: #2e5ae0;
+  /* BORDER / BUTTON HOVER + HOVER */
+  --blue-500: #1748dd;
+  /* TEXT */
+  /* BORDER WIDTHS */
+  --borderSmall: 1.5px;
+  --borderLarge: 3px;
+  /* CORNER RADIUS */
+  --radiusInner: 7px;
+  --radiusOuter: 10px;
+}
+
+/*HTML*/
+html {
+  font-size: 16px;
+}
+
+/*HEADINGS*/
+h1 {
+  font-family: var(--school);
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+}
+
+h2 {
+  font-family: var(--school);
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+}
+
+p, li, b, i, a, mark {
+  font-size: var(--p);
+  line-height: var(--p);
+  letter-spacing: -1.25px;
+}
+/*TEXT*/
+.colophon > p {
+  line-height: 1.25rem;
+}
+
+/*LINKS*/
+a {
+  font-family: var(--bold);
+  color: var(--blue-500);
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.15rem;
+}
+
+a:hover {
+  color: var(--blue-500);
+  text-shadow: 0 0 15px  var(--blue-300);
+}
+
+/*BODY*/
 body {
-  font-family: helvetica, arial, sans-serif;
-  background-color: #f5e2dc;
-  margin: 2em;
-  padding: 2em;
-  font-size: 14px;
+  margin: 6vh 5vw;
+  font-family: var(--reg);
+  color: var(--blue-500);
+  background-color: var(--blue-500);
+  background-image: url('images/backgroundImage.gif');
+  background-attachment: fixed;
+  background-blend-mode:luminosity;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, auto);
+  gap: 0px 0px;
+  grid-template-areas:
+    "topHeader topHeader nullOne nullOne"
+    "filterHR filterHR filterHR nullTwo"
+    "midFilter midFilter midFilter nullTwo"
+    "mainHR mainHR mainHR mainHR"
+    "main main main main"
+    "footerHR footerHR nullThree nullThree"
+    "footer footer nullThree nullThree";
+  word-spacing: -3px;
 }
 
-.btn,
-p.itemPara,
-p {
-  padding: 12px 16px;
-  margin: 2px;
+
+/*HEADER + NAV*/
+/*SECTION: TOPHEADER - HEADER / NAV*/
+  #topHeader {
+    width: min-content;
+  }
+
+  /*HEADER*/
+    header {
+      display: inline-block;
+      width: max-content;
+      margin-bottom: 2.5rem;
+    }
+
+  /*NAV*/
+    nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+  /*NAV BUTTONS*/
+    a.navButton {
+      font-family: var(--reg);
+      font-size: var(--nav);
+      letter-spacing: -1px;
+      line-height: var(--nav);
+      padding: 0.5rem 0.75rem;
+      color: var(--blue-500);
+      -webkit-text-stroke-width: 0.25px;
+      -webkit-text-stroke-color: var(--blue-500);
+      text-decoration: none;
+      border: var(--borderSmall) solid var(--blue-400);
+      border-radius: var(--radiusInner);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    a.navButton:hover {
+      text-shadow: 0 0 0  var(--white);
+      border-radius: var(--radiusInner);
+    }
+
+/*SECTION: MIDFILTER - FILTER */
+#midFilter {
+  grid-area: midFilter;
 }
 
-h1,
-p {
-  padding: 12px 3px;
-  margin: 2px;
-}
+  /*H2 BORDER*/
+    .h2border {
+      width: max-content;
+    }
 
-a,
-p {
-  color: black;
-  font-size: 14px;
-  line-height: 18px;
-}
+  /*FILTER BUTTON WRAP*/
+    #filterButtonWrap {
+      display: inline-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      font-size: var(--filter);
+    }
+  
+  /*FILTER BUTTONS*/
+    .filterButton {
+      font-family: var(--reg);
+      font-size: var(--filter);
+      line-height: var(--filter);
+      letter-spacing: -1.75px;
+      -webkit-text-stroke-width: 0.05px;
+      -webkit-text-stroke-color: var(--blue-500);
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      color: var(--blue-500);
+      border: var(--borderSmall) solid var(--blue-400);
+      border-radius: var(--radiusInner);
+      cursor: pointer;
+    }
 
-a.itemLink,
-p.itemPara {
-  float: left;
-  display: inline-block;
-  border-radius: 12px;
-  background-color: #f1f1f1;
-}
+    .filterButton.active {
+      background-color: var(--blue-400);
+      color: var(--white);
+      border: var(--borderSmall) solid var(--blue-400);
+    }
 
-.filterDiv,
-.show {
-  float: left;
+    .filterButton.active:hover {
+      box-shadow: 0 0px 0px 0px;
+    }
+
+/*SECTION: MAIN - RESOURCE LINKS*/
+  main {
+    width: 90%;
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+  }		
+
+/*GENERAL*/
+  /*INLINE FLEX - COLUMN*/
+.colophon, #lastUpdate, .filterHeading {
+  display: inline-flex;
+  flex-direction: column;
+  }
+
+/*BOX PADDING 1.25rem*/
+  .h2border, .colophon, #lastUpdate, header {
+    padding: 1.25rem;
+  }
+
+/*BOTTOM MARGIN 1REM*/
+  .h2border, main, .colophon, main, h1, h2 {
+  margin-bottom: 1rem;
+  }
+
+/*WHITE BG*/
+  .h2border, header, a.navButton, .filterHeading, .filterButton, .item, #lastUpdate, .colophon {
+    background-color: var(--white);
+  }
+
+/*BORDER - OUTER RADIUS - SMALL*/
+  .h2border, header, .colophon, hr, #lastUpdate, .item, .filterHeading {
+    border: var(--borderSmall) solid var(--blue-500);
+    border-radius: var(--radiusOuter);
+  }
+
+/* BOX SHADOW - HOVER*/
+  a.navButton:hover, .filterButton:hover, .item:hover{
+    box-shadow: 0 0 0.5rem 0.025rem var(--blue-200);
+  }		
+
+/* FLEX GAP */
+  nav, #filterButtonWrap {
+    gap: 0.5rem;
+  }	
+
+/*HR*/
+hr {
   width: 100%;
+  margin: 2.5rem 0;
+  border: 0.5px solid var(--blue-400);
+  border-radius: 100px;
 }
 
-.filterDiv,
-.show,
-.btn {
-  margin: 2px 2px;
+/*MAIN ITEMS*/
+.item:hover {
+color: var(--blue-500);
+  text-shadow: 0 0 0  var(--blue-300);
 }
 
-.filterDiv {
-  display: none;
+
+
+.itemTextWrap {
+  color: var(--blue-500);
+  row-gap: 0.45rem;
+
+}
+
+h3 {
+font-family: var(--reg);
+font-size: 0.9rem;
+line-height: 1rem;
+letter-spacing: -0.25px;
+-webkit-text-stroke-width: 0.4px;
+-webkit-text-stroke-color: var(--blue-500);
+margin-bottom: 0.25rem;
+display: block;
+}
+
+div.itemTextWrap>p {
+font-size: 0.75rem;
+font-family: var(--italic);
+letter-spacing: 0.5px;
+-webkit-text-stroke-width: 0.25px;
+-webkit-text-stroke-color: var(--blue-500);
+hyphens: auto;
+display: block;
+}
+
+.itemIconWrap {
+margin-right: 1rem;
+}
+svg {
+width: 2rem;
+height: 2rem;
+}
+
+/*Filter Details - don't change */
+.item {
+display: none;
 }
 
 .show {
-  display: inline-block;
-}
-
-#myBtnContainer {
-  margin-bottom: 20px;
-}
-
-.container {
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-/* Style the buttons */
-.btn {
-  border-radius: 12px;
-  background-color: #f1f1f1;
-  font-size: 14px;
-  border: none;
-  outline: none;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  padding: 0.75rem 0.75rem;
+  color: var(--blue-500);
+  text-decoration: none;
+  border: var(--borderSmall) solid var(--blue-500);
+  border-radius: var(--radiusInner);
   cursor: pointer;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: stretch;
 }
 
-.btn:hover {
-  background-color: #ddd;
+#topHeader {
+grid-area: topHeader;
 }
 
-.btn.active {
-  background-color: #666;
-  color: white;
+.filterHR {
+grid-area: filterHR;
+}
+
+.mainHR {
+grid-area: mainHR;
+}
+
+main {
+grid-area: main; 
+}
+
+.footerHR {
+grid-area: footerHR;
+}
+
+footer {
+grid-area: footer;
 }
